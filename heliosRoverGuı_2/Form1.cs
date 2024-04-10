@@ -4,6 +4,9 @@ namespace heliosRoverGuı_2
 {
     public partial class Form1 : Form
     {
+
+
+
         public Form1()
         {
             InitializeComponent();
@@ -67,6 +70,11 @@ namespace heliosRoverGuı_2
         private void button2_Click(object sender, EventArgs e)
         {
             loadform(new DataViewWindow());
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
