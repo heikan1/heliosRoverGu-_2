@@ -15,10 +15,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
+using GMap.NET.MapProviders;
+
 namespace heliosRoverGuı_2
 {
     public partial class DataViewWindow : Form
     {
+        string currentFilePath;
         SerialPort serialPort1 = new SerialPort();
         bool baglantiKurulduMU = false;
         bool rawdataatandimi = false;
@@ -84,9 +87,10 @@ namespace heliosRoverGuı_2
         private void timer1_Tick(object sender, EventArgs e)
         {
             //Test_TxTWriter1();
-            if (baglantiKurulduMU) { 
-            LoadDatasToDataViewWindow();
-            }
+            /* if (baglantiKurulduMU) {
+                 ShowDatas();
+             }*/
+            SolveFormattedString(SomeFunctions.RandomDataGenerator());
             //timer1.Stop();
             //Test_TxTWriter2();
             //LoadDatasToDataViewWindow();
@@ -224,6 +228,7 @@ namespace heliosRoverGuı_2
             if (serialPort1.IsOpen)
             {
                 veriDeneme.Text = "Bağlandı!";
+                this.currentFilePath = SomeFunctions.TarihliLoguOlusturma();
                 baglantiKurulduMU = true;
             }
             else
@@ -291,6 +296,88 @@ namespace heliosRoverGuı_2
 
         private void DataViewWindow_Load_1(object sender, EventArgs e)
         {
+
+        }
+
+        private void panelCompass_Paint(object sender, PaintEventArgs e)
+        {
+            SomeFunctions.RoundedLookingPanel(e, panelCompass, radius, clrActiveBorder);
+
+        }
+        
+
+        private void SolveFormattedString(string sformat)
+        {
+            string[] values = null;
+            bool sorunVarmi = false;
+            try
+            {
+                values = sformat.Split('|'); 
+            }
+            catch(Exception ex)
+            {
+                exceptionLabel.Text= ex.Message;
+                sorunVarmi = true;
+            }
+            if (!sorunVarmi)
+            {
+                ShowDatas(values);
+            }
+        }
+        private void ShowDatas(string[] values)
+        {
+            bool sorunVarMi = false;
+            double lan = 0;
+            double lot = 0;
+            //hız verilerinin gösterilmesi
+            speedL.Text = values[1]; //anlık hız verisi
+            try { speedPB.Value = int.Parse(values[1]); } catch { }
+            //speedAverageLabel.Text = 
+            //speedMaxLabel.Text =
+            batteryL.Text = values[2];
+            try { batteryPb.Value = int.Parse(values[2]); } catch { }
+            leftMah.Text = values[3];
+            //estMax.Text =
+            temperatureL.Text = values[4];
+            try { temperaturePb.Value = int.Parse(values[4]); } catch { }
+            //temperatureMax =
+            //temperatureAverage =
+            moistureL.Text = values[5];
+            try { moisturePb.Value = int.Parse(values[5]); } catch { }
+            //moistureMax =
+            //moistureAverage = 
+
+            //direction gösten kod olacak
+
+            //anlık konumu mapte gösteren kod, optimize etmek gerekebilir(yüksek ihtimal gerekecek)
+            try
+            {
+                lan = double.Parse(values[7], System.Globalization.CultureInfo.InvariantCulture);
+                lot = double.Parse(values[8], System.Globalization.CultureInfo.InvariantCulture);
+            }
+            catch (Exception ex) 
+            {
+                exceptionLabel.Text = ex.Message; // 2-3 farklı ex label yapmalıyım karışmasınlar
+                sorunVarMi = true;
+            }
+            if(!sorunVarMi)
+            {
+                gMapControl1.Position = new PointLatLng(lan, lot);
+            }
+
+            //wildplant kodu
+            if (!(values[9] == "0" && values[10] == "0")) // wildplant bulunamazsa koyulacak veri mi değil mi diye kontrol edicem, şimdilik 0 olarak kabul ediyorum
+            {
+                listBox2.Items.Add(values[9] + " , " + values[10]);
+            }
+
+
+
+
+
+
+
+
 
         }
     }

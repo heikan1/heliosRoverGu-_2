@@ -93,6 +93,18 @@
             this.baglantibutonu = new System.Windows.Forms.Button();
             this.test = new System.Windows.Forms.Label();
             this.exceptionLabel = new System.Windows.Forms.Label();
+            this.panelCompass = new System.Windows.Forms.Panel();
+            this.panel23 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.speedMaxLabel = new System.Windows.Forms.Label();
+            this.speedAverageLabel = new System.Windows.Forms.Label();
+            this.estMax = new System.Windows.Forms.Label();
+            this.leftMah = new System.Windows.Forms.Label();
+            this.temperatureMax = new System.Windows.Forms.Label();
+            this.temperatureAverage = new System.Windows.Forms.Label();
+            this.moistureMax = new System.Windows.Forms.Label();
+            this.moistureAverage = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -112,6 +124,8 @@
             this.panel19.SuspendLayout();
             this.panel20.SuspendLayout();
             this.panel21.SuspendLayout();
+            this.panelCompass.SuspendLayout();
+            this.panel23.SuspendLayout();
             this.SuspendLayout();
             // 
             // speedPB
@@ -216,6 +230,8 @@
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.panel9.Controls.Add(this.speedAverageLabel);
+            this.panel9.Controls.Add(this.speedMaxLabel);
             this.panel9.Controls.Add(this.panel11);
             this.panel9.Controls.Add(this.panel10);
             this.panel9.Controls.Add(this.label9);
@@ -371,9 +387,9 @@
             this.label5.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label5.Location = new System.Drawing.Point(280, 5);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 30);
+            this.label5.Size = new System.Drawing.Size(73, 30);
             this.label5.TabIndex = 11;
-            this.label5.Text = "Gyro";
+            this.label5.Text = "GYRO";
             // 
             // panel7
             // 
@@ -484,6 +500,8 @@
             // panel12
             // 
             this.panel12.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.panel12.Controls.Add(this.leftMah);
+            this.panel12.Controls.Add(this.estMax);
             this.panel12.Controls.Add(this.panel13);
             this.panel12.Controls.Add(this.panel14);
             this.panel12.Controls.Add(this.label17);
@@ -587,6 +605,8 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.panel4.Controls.Add(this.moistureAverage);
+            this.panel4.Controls.Add(this.moistureMax);
             this.panel4.Controls.Add(this.panel17);
             this.panel4.Controls.Add(this.panel18);
             this.panel4.Controls.Add(this.label8);
@@ -670,6 +690,8 @@
             // panel20
             // 
             this.panel20.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.panel20.Controls.Add(this.temperatureAverage);
+            this.panel20.Controls.Add(this.temperatureMax);
             this.panel20.Controls.Add(this.panel21);
             this.panel20.Controls.Add(this.panel22);
             this.panel20.Controls.Add(this.label15);
@@ -790,17 +812,131 @@
             // exceptionLabel
             // 
             this.exceptionLabel.AutoSize = true;
-            this.exceptionLabel.Location = new System.Drawing.Point(866, 315);
+            this.exceptionLabel.Location = new System.Drawing.Point(1100, 883);
             this.exceptionLabel.Name = "exceptionLabel";
             this.exceptionLabel.Size = new System.Drawing.Size(81, 20);
             this.exceptionLabel.TabIndex = 25;
             this.exceptionLabel.Text = "exception?";
+            // 
+            // panelCompass
+            // 
+            this.panelCompass.Controls.Add(this.panel23);
+            this.panelCompass.Location = new System.Drawing.Point(832, 584);
+            this.panelCompass.Name = "panelCompass";
+            this.panelCompass.Size = new System.Drawing.Size(250, 278);
+            this.panelCompass.TabIndex = 26;
+            this.panelCompass.Paint += new System.Windows.Forms.PaintEventHandler(this.panelCompass_Paint);
+            // 
+            // panel23
+            // 
+            this.panel23.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panel23.Controls.Add(this.label3);
+            this.panel23.Controls.Add(this.label2);
+            this.panel23.Location = new System.Drawing.Point(0, 227);
+            this.panel23.Name = "panel23";
+            this.panel23.Size = new System.Drawing.Size(250, 51);
+            this.panel23.TabIndex = 16;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(64, 8);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(130, 30);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "DIRECTION";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(64, 13);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(130, 30);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "DIRECTION";
+            // 
+            // speedMaxLabel
+            // 
+            this.speedMaxLabel.AutoSize = true;
+            this.speedMaxLabel.Location = new System.Drawing.Point(116, 22);
+            this.speedMaxLabel.Name = "speedMaxLabel";
+            this.speedMaxLabel.Size = new System.Drawing.Size(113, 20);
+            this.speedMaxLabel.TabIndex = 16;
+            this.speedMaxLabel.Text = "speedMaxLabel";
+            // 
+            // speedAverageLabel
+            // 
+            this.speedAverageLabel.AutoSize = true;
+            this.speedAverageLabel.Location = new System.Drawing.Point(137, 54);
+            this.speedAverageLabel.Name = "speedAverageLabel";
+            this.speedAverageLabel.Size = new System.Drawing.Size(140, 20);
+            this.speedAverageLabel.TabIndex = 17;
+            this.speedAverageLabel.Text = "speedAverageLabel";
+            // 
+            // estMax
+            // 
+            this.estMax.AutoSize = true;
+            this.estMax.Location = new System.Drawing.Point(211, 22);
+            this.estMax.Name = "estMax";
+            this.estMax.Size = new System.Drawing.Size(56, 20);
+            this.estMax.TabIndex = 16;
+            this.estMax.Text = "estMax";
+            // 
+            // leftMah
+            // 
+            this.leftMah.AutoSize = true;
+            this.leftMah.Location = new System.Drawing.Point(151, 54);
+            this.leftMah.Name = "leftMah";
+            this.leftMah.Size = new System.Drawing.Size(60, 20);
+            this.leftMah.TabIndex = 17;
+            this.leftMah.Text = "leftMah";
+            // 
+            // temperatureMax
+            // 
+            this.temperatureMax.AutoSize = true;
+            this.temperatureMax.Location = new System.Drawing.Point(125, 22);
+            this.temperatureMax.Name = "temperatureMax";
+            this.temperatureMax.Size = new System.Drawing.Size(119, 20);
+            this.temperatureMax.TabIndex = 16;
+            this.temperatureMax.Text = "temperatureMax";
+            // 
+            // temperatureAverage
+            // 
+            this.temperatureAverage.AutoSize = true;
+            this.temperatureAverage.Location = new System.Drawing.Point(146, 54);
+            this.temperatureAverage.Name = "temperatureAverage";
+            this.temperatureAverage.Size = new System.Drawing.Size(146, 20);
+            this.temperatureAverage.TabIndex = 17;
+            this.temperatureAverage.Text = "temperatureAverage";
+            // 
+            // moistureMax
+            // 
+            this.moistureMax.AutoSize = true;
+            this.moistureMax.Location = new System.Drawing.Point(107, 22);
+            this.moistureMax.Name = "moistureMax";
+            this.moistureMax.Size = new System.Drawing.Size(95, 20);
+            this.moistureMax.TabIndex = 16;
+            this.moistureMax.Text = "moistureMax";
+            // 
+            // moistureAverage
+            // 
+            this.moistureAverage.AutoSize = true;
+            this.moistureAverage.Location = new System.Drawing.Point(147, 53);
+            this.moistureAverage.Name = "moistureAverage";
+            this.moistureAverage.Size = new System.Drawing.Size(122, 20);
+            this.moistureAverage.TabIndex = 17;
+            this.moistureAverage.Text = "moistureAverage";
             // 
             // DataViewWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1920, 1030);
+            this.Controls.Add(this.panelCompass);
             this.Controls.Add(this.exceptionLabel);
             this.Controls.Add(this.test);
             this.Controls.Add(this.baglantibutonu);
@@ -855,6 +991,9 @@
             this.panel20.PerformLayout();
             this.panel21.ResumeLayout(false);
             this.panel21.PerformLayout();
+            this.panelCompass.ResumeLayout(false);
+            this.panel23.ResumeLayout(false);
+            this.panel23.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -925,5 +1064,17 @@
         private Button baglantibutonu;
         private Label test;
         private Label exceptionLabel;
+        private Panel panelCompass;
+        private Panel panel23;
+        private Label label2;
+        private Label label3;
+        private Label speedAverageLabel;
+        private Label speedMaxLabel;
+        private Label leftMah;
+        private Label estMax;
+        private Label moistureAverage;
+        private Label moistureMax;
+        private Label temperatureAverage;
+        private Label temperatureMax;
     }
 }

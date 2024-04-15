@@ -10,6 +10,7 @@ namespace heliosRoverGuı_2
         public Form1()
         {
             InitializeComponent();
+            SomeFunctions.LogDosyasıYoksaOlusturma();
         }
         public void loadform(object Form)
         {

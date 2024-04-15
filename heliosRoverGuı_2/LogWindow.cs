@@ -16,7 +16,7 @@ namespace heliosRoverGuı_2
     public partial class LogWindow : Form
     {
 
-        string path = "C:\\Users\\metin\\OneDrive - ogr.sakarya.edu.tr\\Masaüstü\\IEEE TARIMSAL IKA\\Arayuz veri deneme\\";
+        string path = Directory.GetCurrentDirectory() + @"\logs";
         //pathi canon hale getirmeliyim
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -73,7 +73,7 @@ namespace heliosRoverGuı_2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string selectedFile = path + comboBox1.SelectedItem;
+            string selectedFile = path +@"\"+ comboBox1.SelectedItem;
             UpdateLog(selectedFile);
         }
 
