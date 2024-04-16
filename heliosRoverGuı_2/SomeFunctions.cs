@@ -11,7 +11,100 @@ namespace heliosRoverGuı_2
 {
     static class SomeFunctions
     {
+        static int hizVeriSayisi = 0;
+        static int lastMaxHizData = 0;
+        static double lastHizOrtData = 0;
 
+        static int temperatureVeriSayisi = 0;
+        static int lastMaxTemperatureData = 0;
+        static double lastTemperatureOrtData = 0;
+
+        static int moistureVeriSayisi = 0;
+        static int lastMaxMoistureeData = 0;
+        static double lastMoistureOrtData = 0;
+
+
+        public static double MoistureOrtHesaplama(int mois)
+        {
+            if (moistureVeriSayisi == 0)
+            {
+                lastMoistureOrtData = mois;
+                moistureVeriSayisi++;
+                return mois;
+            }
+            else
+            {
+                double sonuc = (lastMoistureOrtData * moistureVeriSayisi + mois) / (moistureVeriSayisi + 1);
+                moistureVeriSayisi++;
+                lastMoistureOrtData = sonuc;
+                return sonuc;
+            }
+        }
+        public static int MoistureMaxHesaplama(int mois)
+        {
+            if (mois > lastMaxMoistureeData)
+            {
+                lastMaxMoistureeData = mois;
+                return mois;
+            }
+            else
+                return lastMaxMoistureeData;
+
+        }
+        public static double TemperatureOrtHesaplama(int temp)
+        {
+            if (temperatureVeriSayisi == 0)
+            {
+                lastTemperatureOrtData = temp;
+                temperatureVeriSayisi++;
+                return temp;
+            }
+            else
+            {
+                double sonuc = (lastTemperatureOrtData * temperatureVeriSayisi + temp) / (temperatureVeriSayisi + 1);
+                temperatureVeriSayisi++;
+                lastTemperatureOrtData = sonuc;
+                return sonuc;
+            }
+        }
+        public static int TemperatureMaxHesaplama(int temp)
+        {
+            if (temp > lastMaxTemperatureData)
+            {
+                lastMaxTemperatureData = temp;
+                return temp;
+            }
+            else
+                return lastMaxTemperatureData;
+
+        }
+        public static double HizOrtHesaplama(int hiz) {
+            if (hizVeriSayisi == 0)
+            {
+                lastHizOrtData = hiz;
+                hizVeriSayisi++;
+                return hiz;
+            }
+            else
+            {
+                double sonuc = (lastHizOrtData * hizVeriSayisi + hiz) / (hizVeriSayisi + 1);
+                hizVeriSayisi++;
+                lastHizOrtData = sonuc;
+                return sonuc;
+            }
+        }
+        public static int HizMaxHesaplama(int hiz)
+        {
+            if (hiz > lastMaxHizData)
+            {
+                lastMaxHizData = hiz;
+                return hiz;
+            }
+            else
+                return lastMaxHizData;
+
+        }
+        virtual ListViewVirtualItemsSelectionRangeChangedEventArgs     +e
         // Menüdeki Rounded Rectangleları paneller boyutunda otomatik yapmamızı sağlayan fonksiyon
         public static void RoundedLookingPanel(PaintEventArgs e,Panel pnl,int radius,Color clr)
         {

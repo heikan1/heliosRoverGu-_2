@@ -331,19 +331,27 @@ namespace heliosRoverGuı_2
             double lot = 0;
             //hız verilerinin gösterilmesi
             speedL.Text = values[1]; //anlık hız verisi
-            try { speedPB.Value = int.Parse(values[1]); } catch { }
-            //speedAverageLabel.Text = 
-            //speedMaxLabel.Text =
+            try { speedPB.Value = int.Parse(values[1]);
+                speedAverageLabel.Text = SomeFunctions.HizOrtHesaplama(int.Parse(values[1])).ToString();
+                speedMaxLabel.Text = SomeFunctions.HizMaxHesaplama(int.Parse(values[1])).ToString();
+            } catch { }
+            
             batteryL.Text = values[2];
             try { batteryPb.Value = int.Parse(values[2]); } catch { }
             leftMah.Text = values[3];
             //estMax.Text =
             temperatureL.Text = values[4];
-            try { temperaturePb.Value = int.Parse(values[4]); } catch { }
-            //temperatureMax =
-            //temperatureAverage =
+            try { temperaturePb.Value = int.Parse(values[4]); 
+                   temperatureMax.Text = SomeFunctions.TemperatureMaxHesaplama(int.Parse(values[4])).ToString();
+                    temperatureAverage.Text = SomeFunctions.TemperatureOrtHesaplama(int.Parse(values[4])).ToString();
+            } catch { }
+            
+
             moistureL.Text = values[5];
-            try { moisturePb.Value = int.Parse(values[5]); } catch { }
+            try { moisturePb.Value = int.Parse(values[5]);
+                moistureAverage.Text = SomeFunctions.MoistureOrtHesaplama(int.Parse(values[5])).ToString();
+                moistureMax.Text = SomeFunctions.MoistureMaxHesaplama(int.Parse(values[5])).ToString();
+            } catch { }
             //moistureMax =
             //moistureAverage = 
 
