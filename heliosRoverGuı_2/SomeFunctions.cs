@@ -6,7 +6,9 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Xml.Linq;
+using System.Text.Json;
+using System.Net.Http;
 namespace heliosRoverGuı_2
 {
     static class SomeFunctions
@@ -23,7 +25,27 @@ namespace heliosRoverGuı_2
         static int lastMaxMoistureeData = 0;
         static double lastMoistureOrtData = 0;
 
+        static string apiKeyRead = "JWKKGVJ9HXC1OI6J";
+        static string connection = "https://api.thingspeak.com/channels/2525662/feeds.json?api_key=JWKKGVJ9HXC1OI6J&results=1";
+        static HttpClient client = new HttpClient();
+      
+        public static string KripteVeriyiThingSpeaktenOku()
+        {
+            string result = "";
+            var get = client.GetAsync(connection).Result;
+            result += get.Content.ReadAsStringAsync().Result; //plain json
+            //dynamic json = JObject.Parse(result);
+            //JsonSerializer.Deserialize<string>(result);
+            //int noOfRecipients = json.recipients;
 
+            int index = result.IndexOf("~");
+            result = result.Substring(index).Trim();
+            //index = result.IndexOf("field3");
+            //result = result.Substring(index);
+            result =result.Remove(result.Length - 4);
+            return result;
+        }
+        
         public static double MoistureOrtHesaplama(int mois)
         {
             if (moistureVeriSayisi == 0)
@@ -104,7 +126,6 @@ namespace heliosRoverGuı_2
                 return lastMaxHizData;
 
         }
-        virtual ListViewVirtualItemsSelectionRangeChangedEventArgs     +e
         // Menüdeki Rounded Rectangleları paneller boyutunda otomatik yapmamızı sağlayan fonksiyon
         public static void RoundedLookingPanel(PaintEventArgs e,Panel pnl,int radius,Color clr)
         {
@@ -140,6 +161,7 @@ namespace heliosRoverGuı_2
             string currentTime = DateTime.Now.ToString("yyyy") + "_" + DateTime.Now.ToString("MM") + "_" + DateTime.Now.ToString("dd") + "-" + DateTime.Now.ToString("HH") + "_" + DateTime.Now.ToString("mm") + "_" + DateTime.Now.ToString("ss");
             string filepath = @"logs\" + currentTime.ToString() + ".txt";
             FileStream fs = File.Create(filepath);
+            fs.Close();
             return filepath;
         }
 

@@ -38,6 +38,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.speedL = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.speedAverageLabel = new System.Windows.Forms.Label();
+            this.speedMaxLabel = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
@@ -61,6 +63,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.batteryL = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.leftMah = new System.Windows.Forms.Label();
+            this.estMax = new System.Windows.Forms.Label();
             this.panel13 = new System.Windows.Forms.Panel();
             this.label13 = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
@@ -71,6 +75,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.moistureL = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.moistureAverage = new System.Windows.Forms.Label();
+            this.moistureMax = new System.Windows.Forms.Label();
             this.panel17 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel18 = new System.Windows.Forms.Panel();
@@ -79,6 +85,8 @@
             this.panel19 = new System.Windows.Forms.Panel();
             this.temperatureL = new System.Windows.Forms.Label();
             this.panel20 = new System.Windows.Forms.Panel();
+            this.temperatureAverage = new System.Windows.Forms.Label();
+            this.temperatureMax = new System.Windows.Forms.Label();
             this.panel21 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
             this.panel22 = new System.Windows.Forms.Panel();
@@ -94,17 +102,14 @@
             this.test = new System.Windows.Forms.Label();
             this.exceptionLabel = new System.Windows.Forms.Label();
             this.panelCompass = new System.Windows.Forms.Panel();
+            this.compassCustomControl1 = new compassdeneme.components.compassCustomControl();
             this.panel23 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.speedMaxLabel = new System.Windows.Forms.Label();
-            this.speedAverageLabel = new System.Windows.Forms.Label();
-            this.estMax = new System.Windows.Forms.Label();
-            this.leftMah = new System.Windows.Forms.Label();
-            this.temperatureMax = new System.Windows.Forms.Label();
-            this.temperatureAverage = new System.Windows.Forms.Label();
-            this.moistureMax = new System.Windows.Forms.Label();
-            this.moistureAverage = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.labelThingspeakDeneme = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -130,7 +135,7 @@
             // 
             // speedPB
             // 
-            this.speedPB.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.speedPB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(181)))), ((int)(((byte)(181)))));
             this.speedPB.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.speedPB.Location = new System.Drawing.Point(10, 19);
             this.speedPB.Name = "speedPB";
@@ -147,7 +152,7 @@
             // 
             // batteryPb
             // 
-            this.batteryPb.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.batteryPb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(181)))), ((int)(((byte)(181)))));
             this.batteryPb.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.batteryPb.Location = new System.Drawing.Point(10, 19);
             this.batteryPb.Name = "batteryPb";
@@ -163,7 +168,7 @@
             // 
             // moisturePb
             // 
-            this.moisturePb.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.moisturePb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(181)))), ((int)(((byte)(181)))));
             this.moisturePb.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.moisturePb.Location = new System.Drawing.Point(10, 19);
             this.moisturePb.Name = "moisturePb";
@@ -180,7 +185,7 @@
             // 
             // temperaturePb
             // 
-            this.temperaturePb.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.temperaturePb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(181)))), ((int)(((byte)(181)))));
             this.temperaturePb.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.temperaturePb.Location = new System.Drawing.Point(10, 19);
             this.temperaturePb.Name = "temperaturePb";
@@ -240,6 +245,24 @@
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(300, 132);
             this.panel9.TabIndex = 15;
+            // 
+            // speedAverageLabel
+            // 
+            this.speedAverageLabel.AutoSize = true;
+            this.speedAverageLabel.Location = new System.Drawing.Point(137, 54);
+            this.speedAverageLabel.Name = "speedAverageLabel";
+            this.speedAverageLabel.Size = new System.Drawing.Size(140, 20);
+            this.speedAverageLabel.TabIndex = 17;
+            this.speedAverageLabel.Text = "speedAverageLabel";
+            // 
+            // speedMaxLabel
+            // 
+            this.speedMaxLabel.AutoSize = true;
+            this.speedMaxLabel.Location = new System.Drawing.Point(116, 22);
+            this.speedMaxLabel.Name = "speedMaxLabel";
+            this.speedMaxLabel.Size = new System.Drawing.Size(113, 20);
+            this.speedMaxLabel.TabIndex = 16;
+            this.speedMaxLabel.Text = "speedMaxLabel";
             // 
             // panel11
             // 
@@ -344,9 +367,9 @@
             this.label21.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label21.Location = new System.Drawing.Point(429, 12);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(23, 25);
+            this.label21.Size = new System.Drawing.Size(89, 25);
             this.label21.TabIndex = 15;
-            this.label21.Text = "Z";
+            this.label21.Text = "Direction";
             // 
             // label20
             // 
@@ -355,9 +378,9 @@
             this.label20.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label20.Location = new System.Drawing.Point(236, 12);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(22, 25);
+            this.label20.Size = new System.Drawing.Size(98, 25);
             this.label20.TabIndex = 14;
-            this.label20.Text = "Y";
+            this.label20.Text = "Longitude";
             // 
             // label19
             // 
@@ -366,17 +389,17 @@
             this.label19.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label19.Location = new System.Drawing.Point(21, 12);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(23, 25);
+            this.label19.Size = new System.Drawing.Size(81, 25);
             this.label19.TabIndex = 13;
-            this.label19.Text = "X";
+            this.label19.Text = "Latitude";
             // 
             // panel15
             // 
             this.panel15.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.panel15.Controls.Add(this.label5);
-            this.panel15.Location = new System.Drawing.Point(0, 77);
+            this.panel15.Location = new System.Drawing.Point(0, 74);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(622, 43);
+            this.panel15.Size = new System.Drawing.Size(622, 46);
             this.panel15.TabIndex = 12;
             this.panel15.Paint += new System.Windows.Forms.PaintEventHandler(this.panel15_Paint);
             // 
@@ -385,11 +408,11 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(280, 5);
+            this.label5.Location = new System.Drawing.Point(239, 8);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(73, 30);
+            this.label5.Size = new System.Drawing.Size(128, 30);
             this.label5.TabIndex = 11;
-            this.label5.Text = "GYRO";
+            this.label5.Text = "GPS DATAS";
             // 
             // panel7
             // 
@@ -402,7 +425,7 @@
             // 
             // listBox2
             // 
-            this.listBox2.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.listBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(181)))), ((int)(((byte)(181)))));
             this.listBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listBox2.FormattingEnabled = true;
             this.listBox2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -511,6 +534,24 @@
             this.panel12.Size = new System.Drawing.Size(300, 132);
             this.panel12.TabIndex = 15;
             // 
+            // leftMah
+            // 
+            this.leftMah.AutoSize = true;
+            this.leftMah.Location = new System.Drawing.Point(151, 54);
+            this.leftMah.Name = "leftMah";
+            this.leftMah.Size = new System.Drawing.Size(60, 20);
+            this.leftMah.TabIndex = 17;
+            this.leftMah.Text = "leftMah";
+            // 
+            // estMax
+            // 
+            this.estMax.AutoSize = true;
+            this.estMax.Location = new System.Drawing.Point(211, 22);
+            this.estMax.Name = "estMax";
+            this.estMax.Size = new System.Drawing.Size(56, 20);
+            this.estMax.TabIndex = 16;
+            this.estMax.Text = "estMax";
+            // 
             // panel13
             // 
             this.panel13.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -616,6 +657,24 @@
             this.panel4.Size = new System.Drawing.Size(300, 132);
             this.panel4.TabIndex = 15;
             // 
+            // moistureAverage
+            // 
+            this.moistureAverage.AutoSize = true;
+            this.moistureAverage.Location = new System.Drawing.Point(147, 53);
+            this.moistureAverage.Name = "moistureAverage";
+            this.moistureAverage.Size = new System.Drawing.Size(122, 20);
+            this.moistureAverage.TabIndex = 17;
+            this.moistureAverage.Text = "moistureAverage";
+            // 
+            // moistureMax
+            // 
+            this.moistureMax.AutoSize = true;
+            this.moistureMax.Location = new System.Drawing.Point(107, 22);
+            this.moistureMax.Name = "moistureMax";
+            this.moistureMax.Size = new System.Drawing.Size(95, 20);
+            this.moistureMax.TabIndex = 16;
+            this.moistureMax.Text = "moistureMax";
+            // 
             // panel17
             // 
             this.panel17.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -701,6 +760,24 @@
             this.panel20.Size = new System.Drawing.Size(300, 132);
             this.panel20.TabIndex = 15;
             // 
+            // temperatureAverage
+            // 
+            this.temperatureAverage.AutoSize = true;
+            this.temperatureAverage.Location = new System.Drawing.Point(146, 54);
+            this.temperatureAverage.Name = "temperatureAverage";
+            this.temperatureAverage.Size = new System.Drawing.Size(146, 20);
+            this.temperatureAverage.TabIndex = 17;
+            this.temperatureAverage.Text = "temperatureAverage";
+            // 
+            // temperatureMax
+            // 
+            this.temperatureMax.AutoSize = true;
+            this.temperatureMax.Location = new System.Drawing.Point(125, 22);
+            this.temperatureMax.Name = "temperatureMax";
+            this.temperatureMax.Size = new System.Drawing.Size(119, 20);
+            this.temperatureMax.TabIndex = 16;
+            this.temperatureMax.Text = "temperatureMax";
+            // 
             // panel21
             // 
             this.panel21.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -782,7 +859,7 @@
             // veriDeneme
             // 
             this.veriDeneme.AutoSize = true;
-            this.veriDeneme.Location = new System.Drawing.Point(866, 241);
+            this.veriDeneme.Location = new System.Drawing.Point(866, 273);
             this.veriDeneme.Name = "veriDeneme";
             this.veriDeneme.Size = new System.Drawing.Size(50, 20);
             this.veriDeneme.TabIndex = 22;
@@ -791,11 +868,11 @@
             // 
             // baglantibutonu
             // 
-            this.baglantibutonu.Location = new System.Drawing.Point(959, 232);
+            this.baglantibutonu.Location = new System.Drawing.Point(935, 232);
             this.baglantibutonu.Name = "baglantibutonu";
-            this.baglantibutonu.Size = new System.Drawing.Size(94, 29);
+            this.baglantibutonu.Size = new System.Drawing.Size(118, 29);
             this.baglantibutonu.TabIndex = 23;
-            this.baglantibutonu.Text = "baglantikur";
+            this.baglantibutonu.Text = "baglantikurseri";
             this.baglantibutonu.UseVisualStyleBackColor = true;
             this.baglantibutonu.Click += new System.EventHandler(this.baglantibutonu_Click);
             // 
@@ -820,21 +897,33 @@
             // 
             // panelCompass
             // 
+            this.panelCompass.Controls.Add(this.compassCustomControl1);
             this.panelCompass.Controls.Add(this.panel23);
-            this.panelCompass.Location = new System.Drawing.Point(832, 584);
+            this.panelCompass.Location = new System.Drawing.Point(832, 517);
             this.panelCompass.Name = "panelCompass";
-            this.panelCompass.Size = new System.Drawing.Size(250, 278);
+            this.panelCompass.Size = new System.Drawing.Size(250, 345);
             this.panelCompass.TabIndex = 26;
             this.panelCompass.Paint += new System.Windows.Forms.PaintEventHandler(this.panelCompass_Paint);
+            // 
+            // compassCustomControl1
+            // 
+            this.compassCustomControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(181)))), ((int)(((byte)(181)))));
+            this.compassCustomControl1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.compassCustomControl1.Location = new System.Drawing.Point(0, 49);
+            this.compassCustomControl1.Name = "compassCustomControl1";
+            this.compassCustomControl1.Size = new System.Drawing.Size(250, 250);
+            this.compassCustomControl1.TabIndex = 17;
+            this.compassCustomControl1.Text = "compassCustomControl1";
+            this.compassCustomControl1.Click += new System.EventHandler(this.compassCustomControl1_Click);
             // 
             // panel23
             // 
             this.panel23.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.panel23.Controls.Add(this.label3);
             this.panel23.Controls.Add(this.label2);
-            this.panel23.Location = new System.Drawing.Point(0, 227);
+            this.panel23.Location = new System.Drawing.Point(0, 292);
             this.panel23.Name = "panel23";
-            this.panel23.Size = new System.Drawing.Size(250, 51);
+            this.panel23.Size = new System.Drawing.Size(250, 53);
             this.panel23.TabIndex = 16;
             // 
             // label3
@@ -842,7 +931,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(64, 8);
+            this.label3.Location = new System.Drawing.Point(64, 13);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(130, 30);
             this.label3.TabIndex = 8;
@@ -859,83 +948,53 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "DIRECTION";
             // 
-            // speedMaxLabel
+            // button1
             // 
-            this.speedMaxLabel.AutoSize = true;
-            this.speedMaxLabel.Location = new System.Drawing.Point(116, 22);
-            this.speedMaxLabel.Name = "speedMaxLabel";
-            this.speedMaxLabel.Size = new System.Drawing.Size(113, 20);
-            this.speedMaxLabel.TabIndex = 16;
-            this.speedMaxLabel.Text = "speedMaxLabel";
+            this.button1.Location = new System.Drawing.Point(902, 366);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(124, 29);
+            this.button1.TabIndex = 27;
+            this.button1.Text = "baglanti 2";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // speedAverageLabel
+            // button2
             // 
-            this.speedAverageLabel.AutoSize = true;
-            this.speedAverageLabel.Location = new System.Drawing.Point(137, 54);
-            this.speedAverageLabel.Name = "speedAverageLabel";
-            this.speedAverageLabel.Size = new System.Drawing.Size(140, 20);
-            this.speedAverageLabel.TabIndex = 17;
-            this.speedAverageLabel.Text = "speedAverageLabel";
+            this.button2.Location = new System.Drawing.Point(902, 401);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(124, 29);
+            this.button2.TabIndex = 28;
+            this.button2.Text = "baglanti 2 kes";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // estMax
+            // labelThingspeakDeneme
             // 
-            this.estMax.AutoSize = true;
-            this.estMax.Location = new System.Drawing.Point(211, 22);
-            this.estMax.Name = "estMax";
-            this.estMax.Size = new System.Drawing.Size(56, 20);
-            this.estMax.TabIndex = 16;
-            this.estMax.Text = "estMax";
+            this.labelThingspeakDeneme.AutoSize = true;
+            this.labelThingspeakDeneme.Location = new System.Drawing.Point(191, 883);
+            this.labelThingspeakDeneme.Name = "labelThingspeakDeneme";
+            this.labelThingspeakDeneme.Size = new System.Drawing.Size(58, 20);
+            this.labelThingspeakDeneme.TabIndex = 29;
+            this.labelThingspeakDeneme.Text = "label12";
             // 
-            // leftMah
+            // label12
             // 
-            this.leftMah.AutoSize = true;
-            this.leftMah.Location = new System.Drawing.Point(151, 54);
-            this.leftMah.Name = "leftMah";
-            this.leftMah.Size = new System.Drawing.Size(60, 20);
-            this.leftMah.TabIndex = 17;
-            this.leftMah.Text = "leftMah";
-            // 
-            // temperatureMax
-            // 
-            this.temperatureMax.AutoSize = true;
-            this.temperatureMax.Location = new System.Drawing.Point(125, 22);
-            this.temperatureMax.Name = "temperatureMax";
-            this.temperatureMax.Size = new System.Drawing.Size(119, 20);
-            this.temperatureMax.TabIndex = 16;
-            this.temperatureMax.Text = "temperatureMax";
-            // 
-            // temperatureAverage
-            // 
-            this.temperatureAverage.AutoSize = true;
-            this.temperatureAverage.Location = new System.Drawing.Point(146, 54);
-            this.temperatureAverage.Name = "temperatureAverage";
-            this.temperatureAverage.Size = new System.Drawing.Size(146, 20);
-            this.temperatureAverage.TabIndex = 17;
-            this.temperatureAverage.Text = "temperatureAverage";
-            // 
-            // moistureMax
-            // 
-            this.moistureMax.AutoSize = true;
-            this.moistureMax.Location = new System.Drawing.Point(107, 22);
-            this.moistureMax.Name = "moistureMax";
-            this.moistureMax.Size = new System.Drawing.Size(95, 20);
-            this.moistureMax.TabIndex = 16;
-            this.moistureMax.Text = "moistureMax";
-            // 
-            // moistureAverage
-            // 
-            this.moistureAverage.AutoSize = true;
-            this.moistureAverage.Location = new System.Drawing.Point(147, 53);
-            this.moistureAverage.Name = "moistureAverage";
-            this.moistureAverage.Size = new System.Drawing.Size(122, 20);
-            this.moistureAverage.TabIndex = 17;
-            this.moistureAverage.Text = "moistureAverage";
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(196, 915);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(58, 20);
+            this.label12.TabIndex = 30;
+            this.label12.Text = "label12";
             // 
             // DataViewWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1920, 1030);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.labelThingspeakDeneme);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panelCompass);
             this.Controls.Add(this.exceptionLabel);
             this.Controls.Add(this.test);
@@ -1076,5 +1135,10 @@
         private Label moistureMax;
         private Label temperatureAverage;
         private Label temperatureMax;
+        private compassdeneme.components.compassCustomControl compassCustomControl1;
+        private Button button1;
+        private Button button2;
+        private Label labelThingspeakDeneme;
+        private Label label12;
     }
 }

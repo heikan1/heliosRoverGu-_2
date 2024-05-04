@@ -16,6 +16,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
 using GMap.NET.MapProviders;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
+using Newtonsoft.Json.Linq;
 
 namespace heliosRoverGuı_2
 {
@@ -25,7 +27,7 @@ namespace heliosRoverGuı_2
         SerialPort serialPort1 = new SerialPort();
         bool baglantiKurulduMU = false;
         bool rawdataatandimi = false;
-        Color clrActiveBorder = Color.FromArgb(255, 184, 180, 180);
+        Color clrActiveBorder = Color.FromArgb(255, 184, 181, 181); // 184,181,181,255
         Color clrControlDarkDark = Color.FromArgb(255, 104, 105, 104);
         int radius = 25;
         string rawData;
@@ -90,12 +92,26 @@ namespace heliosRoverGuı_2
             /* if (baglantiKurulduMU) {
                  ShowDatas();
              }*/
-            SolveFormattedString(SomeFunctions.RandomDataGenerator());
+            if (baglantiKurulduMU)
+            {
+                //SolveFormattedString(SomeFunctions.RandomDataGenerator()); //rastgele veri okuma
+                SolveFormattedString(SomeFunctions.KripteVeriyiThingSpeaktenOku()); //veriyi thingspeakten okuma
+            }
+
+            //ratata();
+            labelThingspeakDeneme.Text = SomeFunctions.KripteVeriyiThingSpeaktenOku();
+            //  Console.WriteLine("aaa");
+            //Console.WriteLine(labelThingspeakDeneme.Text+"\n");
             //timer1.Stop();
             //Test_TxTWriter2();
             //LoadDatasToDataViewWindow();
         }
-
+        private async void ratata()
+        {
+            //olmadıs
+            var pros = ThingSpeakPorcessor.LoadThingSpeak();
+            labelThingspeakDeneme.Text = pros.ToString();
+        }
         public DataViewWindow()
         {
             InitializeComponent();
@@ -199,7 +215,7 @@ namespace heliosRoverGuı_2
         {
             if (baglantiKurulduMU)
             {
-                mapUpdate(rawData);
+                //mapUpdate(rawData);
             }
         }
 
@@ -225,10 +241,13 @@ namespace heliosRoverGuı_2
         private void BaglantiKur()
         {
             guncellemeTimeri.Start();
-            if (serialPort1.IsOpen)
+            if (true/*serialPort1.IsOpen*/)
             {
                 veriDeneme.Text = "Bağlandı!";
+                SomeFunctions.LogDosyasıYoksaOlusturma();
                 this.currentFilePath = SomeFunctions.TarihliLoguOlusturma();
+
+                //File.Open(currentFilePath, FileMode.Open);
                 baglantiKurulduMU = true;
             }
             else
@@ -308,6 +327,11 @@ namespace heliosRoverGuı_2
 
         private void SolveFormattedString(string sformat)
         {
+            //IEnumerable<string> m_oEnum = Enumerable.Empty<string>();
+            //m_oEnum.Append(sformat);
+            //File.AppendAllLines(currentFilePath, m_oEnum);
+            File.AppendAllText(currentFilePath, sformat + Environment.NewLine);
+            SaveDatas(sformat);
             string[] values = null;
             bool sorunVarmi = false;
             try
@@ -323,6 +347,18 @@ namespace heliosRoverGuı_2
             {
                 ShowDatas(values);
             }
+        }
+
+        private void SaveDatas(string values)
+        {
+            //File.AppendAllText(file.FileName, line);
+            //values += System.Environment.NewLine;
+            //File.AppendAllLines(currentFilePath,values);
+            //StreamWriter sw = new StreamWriter(currentFilePath);
+            //sw.WriteLine(values + Environment.NewLine);  
+            //sw.Close();
+          
+            
         }
         private void ShowDatas(string[] values)
         {
@@ -352,10 +388,11 @@ namespace heliosRoverGuı_2
                 moistureAverage.Text = SomeFunctions.MoistureOrtHesaplama(int.Parse(values[5])).ToString();
                 moistureMax.Text = SomeFunctions.MoistureMaxHesaplama(int.Parse(values[5])).ToString();
             } catch { }
-            //moistureMax =
-            //moistureAverage = 
 
             //direction gösten kod olacak
+            var rand = new Random();
+            int deger = rand.Next(0, 361);
+            compassCustomControl1.UpdateCompass(deger);
 
             //anlık konumu mapte gösteren kod, optimize etmek gerekebilir(yüksek ihtimal gerekecek)
             try
@@ -380,13 +417,21 @@ namespace heliosRoverGuı_2
             }
 
 
+        }
 
+        private void compassCustomControl1_Click(object sender, EventArgs e)
+        {
 
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            BaglantiKur();
+        }
 
-
-
-
+        private void button2_Click(object sender, EventArgs e)
+        {
+            baglantiKurulduMU = false;
         }
     }
 }
