@@ -42,46 +42,50 @@ namespace heliosRoverGuı_2
             {
                 values = lastLine.Split(';');
             }
-            catch (Exception e) { 
+            catch (Exception e)
+            {
                 exceptionLabel.Text = e.Message;
-                sorunVarMi= true;
+                sorunVarMi = true;
             }
-            if (!sorunVarMi) { 
-            //barların verilerini güncelliyo
-            //speedPB.Value = int.Parse(values[0]);
-            speedL.Text = values[0];
-            moisturePb.Value = int.Parse(values[4]);
-            moistureL.Text = values[4];
-            temperaturePb.Value = int.Parse(values[5]);
-            temperatureL.Text = values[5];
-            batteryPb.Value = int.Parse(values[2]);
-            batteryL.Text = values[2];
-            //map
-            rawData = values[6];  
-            rawdataatandimi = true;
+            if (!sorunVarMi)
+            {
+                //barların verilerini güncelliyo
+                //speedPB.Value = int.Parse(values[0]);
+                speedL.Text = values[0];
+                moisturePb.Value = int.Parse(values[4]);
+                moistureL.Text = values[4];
+                temperaturePb.Value = int.Parse(values[5]);
+                temperatureL.Text = values[5];
+                batteryPb.Value = int.Parse(values[2]);
+                batteryL.Text = values[2];
+                //map
+                rawData = values[6];
+                rawdataatandimi = true;
             }
         }
         private void mapUpdate(string rawData)
         {
             bool sorunvarmimap = false;
             string[] datas = null;
-            try { 
+            try
+            {
                 datas = rawData.Split(",");
             }
-            catch (Exception e) { 
+            catch (Exception e)
+            {
                 sorunvarmimap = true;
                 exceptionLabel.Text = e.Message;
             }
 
             if (!sorunvarmimap)
             {
-            //Debug.WriteLine(double.Parse(datas[0], System.Globalization.CultureInfo.InvariantCulture));
-            //datas[0] = "40.742271";
-            //datas[1] = "30.332302";
-            double lan = double.Parse(datas[0], System.Globalization.CultureInfo.InvariantCulture);
-            double lot = double.Parse(datas[1], System.Globalization.CultureInfo.InvariantCulture);
-            // gMapControl1.Position = new PointLatLng(double.Parse(datas[0]), double.Parse(datas[1]));
-            gMapControl1.Position = new PointLatLng(lan, lot);
+                //Debug.WriteLine(double.Parse(datas[0], System.Globalization.CultureInfo.InvariantCulture));
+                //datas[0] = "40.742271";
+                //datas[1] = "30.332302";
+                double lan = double.Parse(datas[0], System.Globalization.CultureInfo.InvariantCulture);
+                double lot = double.Parse(datas[1], System.Globalization.CultureInfo.InvariantCulture);
+                // gMapControl1.Position = new PointLatLng(double.Parse(datas[0]), double.Parse(datas[1]));
+                gMapControl1.Position = new PointLatLng(lan, lot);
 
             }
 
@@ -94,8 +98,8 @@ namespace heliosRoverGuı_2
              }*/
             if (baglantiKurulduMU)
             {
-                //SolveFormattedString(SomeFunctions.RandomDataGenerator()); //rastgele veri okuma
-                SolveFormattedString(SomeFunctions.KripteVeriyiThingSpeaktenOku()); //veriyi thingspeakten okuma
+                SolveFormattedString(SomeFunctions.RandomDataGenerator()); //rastgele veri okuma
+                //SolveFormattedString(SomeFunctions.KripteVeriyiThingSpeaktenOku()); //veriyi thingspeakten okuma
             }
 
             //ratata();
@@ -146,6 +150,7 @@ namespace heliosRoverGuı_2
             SomeFunctions.RoundedLookingPanel(e, panel5, radius, clrActiveBorder);
         }
 
+
         private void panel7_Paint(object sender, PaintEventArgs e)
         {
             SomeFunctions.RoundedLookingPanel(e, panel7, radius, clrActiveBorder);
@@ -174,7 +179,7 @@ namespace heliosRoverGuı_2
 
         private void panel15_Paint(object sender, PaintEventArgs e)
         {
-            SomeFunctions.RoundedLookingPanel(e,panel15,radius, clrControlDarkDark);
+            SomeFunctions.RoundedLookingPanel(e, panel15, radius, clrControlDarkDark);
         }
 
         private void panel19_Paint(object sender, PaintEventArgs e)
@@ -229,7 +234,7 @@ namespace heliosRoverGuı_2
 
                 //veriDeneme.Text = datas.AsQueryable().Last();
                 speedPB.Value = Int16.Parse(datas[0]);
-                
+
 
             }
             catch (Exception ex)
@@ -323,7 +328,7 @@ namespace heliosRoverGuı_2
             SomeFunctions.RoundedLookingPanel(e, panelCompass, radius, clrActiveBorder);
 
         }
-        
+
 
         private void SolveFormattedString(string sformat)
         {
@@ -336,11 +341,11 @@ namespace heliosRoverGuı_2
             bool sorunVarmi = false;
             try
             {
-                values = sformat.Split('|'); 
+                values = sformat.Split('|');
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                exceptionLabel.Text= ex.Message;
+                exceptionLabel.Text = ex.Message;
                 sorunVarmi = true;
             }
             if (!sorunVarmi)
@@ -357,8 +362,8 @@ namespace heliosRoverGuı_2
             //StreamWriter sw = new StreamWriter(currentFilePath);
             //sw.WriteLine(values + Environment.NewLine);  
             //sw.Close();
-          
-            
+
+
         }
         private void ShowDatas(string[] values)
         {
@@ -367,27 +372,36 @@ namespace heliosRoverGuı_2
             double lot = 0;
             //hız verilerinin gösterilmesi
             speedL.Text = values[1]; //anlık hız verisi
-            try { speedPB.Value = int.Parse(values[1]);
+            try
+            {
+                speedPB.Value = int.Parse(values[1]);
                 speedAverageLabel.Text = SomeFunctions.HizOrtHesaplama(int.Parse(values[1])).ToString();
                 speedMaxLabel.Text = SomeFunctions.HizMaxHesaplama(int.Parse(values[1])).ToString();
-            } catch { }
-            
+            }
+            catch { }
+
             batteryL.Text = values[2];
             try { batteryPb.Value = int.Parse(values[2]); } catch { }
             leftMah.Text = values[3];
             //estMax.Text =
             temperatureL.Text = values[4];
-            try { temperaturePb.Value = int.Parse(values[4]); 
-                   temperatureMax.Text = SomeFunctions.TemperatureMaxHesaplama(int.Parse(values[4])).ToString();
-                    temperatureAverage.Text = SomeFunctions.TemperatureOrtHesaplama(int.Parse(values[4])).ToString();
-            } catch { }
-            
+            try
+            {
+                temperaturePb.Value = int.Parse(values[4]);
+                temperatureMax.Text = SomeFunctions.TemperatureMaxHesaplama(int.Parse(values[4])).ToString();
+                temperatureAverage.Text = SomeFunctions.TemperatureOrtHesaplama(int.Parse(values[4])).ToString();
+            }
+            catch { }
+
 
             moistureL.Text = values[5];
-            try { moisturePb.Value = int.Parse(values[5]);
+            try
+            {
+                moisturePb.Value = int.Parse(values[5]);
                 moistureAverage.Text = SomeFunctions.MoistureOrtHesaplama(int.Parse(values[5])).ToString();
                 moistureMax.Text = SomeFunctions.MoistureMaxHesaplama(int.Parse(values[5])).ToString();
-            } catch { }
+            }
+            catch { }
 
             //direction gösten kod olacak
             var rand = new Random();
@@ -400,12 +414,12 @@ namespace heliosRoverGuı_2
                 lan = double.Parse(values[7], System.Globalization.CultureInfo.InvariantCulture);
                 lot = double.Parse(values[8], System.Globalization.CultureInfo.InvariantCulture);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 exceptionLabel.Text = ex.Message; // 2-3 farklı ex label yapmalıyım karışmasınlar
                 sorunVarMi = true;
             }
-            if(!sorunVarMi)
+            if (!sorunVarMi)
             {
                 gMapControl1.Position = new PointLatLng(lan, lot);
             }
@@ -432,6 +446,11 @@ namespace heliosRoverGuı_2
         private void button2_Click(object sender, EventArgs e)
         {
             baglantiKurulduMU = false;
+        }
+
+        private void panel4_Paint_1(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

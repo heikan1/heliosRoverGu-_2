@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
 using System.IO.Ports;
+using System.CodeDom.Compiler;
 
 namespace heliosRoverGuı_2
 {
@@ -32,6 +33,7 @@ namespace heliosRoverGuı_2
         //sorunsuz çalışıyo
         private void UpdateLog(string selectedFile)
         {
+            MessageBox.Show(path);
             //dataGridView1.Rows.Clear();
             table.Clear();
             //dataGridView1.DataBind();
@@ -50,21 +52,36 @@ namespace heliosRoverGuı_2
                 {
                     row[j] = values[j].Trim();
                 }
-                table.Rows.Add(row);
+                //
+                for(int j = 0; j < row.Length; j++)
+                {
+                    //List<string> newRow = new List<string>();
+                    string[] temp = row[j].Split("|");
+
+                    string[] arr = temp[1..];
+                    table.Rows.Add(arr);
+                }
+
+                //her bir linedan verileri toplama
+                //table.Rows.Add(row);
             }
         }
 
         DataTable table = new DataTable();
         private void LogWindow_Load(object sender, EventArgs e)
         {
-            table.Columns.Add("Speed", typeof(int));
+            table.Columns.Add("Speed", typeof(string));
+            table.Columns.Add("a ", typeof(string));
+            table.Columns.Add("Battery Percentage", typeof(string));
             table.Columns.Add("Gyro", typeof(string));
-            table.Columns.Add("Battery Percentage", typeof(int));
             table.Columns.Add("Date & Time", typeof(string));
-            table.Columns.Add("Moisture", typeof(int));
-            table.Columns.Add("Temperature", typeof(int));
+            table.Columns.Add("Moisture", typeof(string));
+            table.Columns.Add("Temperature", typeof(string));
             table.Columns.Add("Coordinates", typeof(string));
-
+            table.Columns.Add("b ", typeof(string));
+            table.Columns.Add("c ", typeof(string));
+            table.Columns.Add("d ", typeof(string));
+            
             comboBox1_DropDown(sender,e);
 
             dataGridView1.DataSource= table;
